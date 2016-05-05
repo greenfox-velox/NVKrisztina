@@ -1,0 +1,74 @@
+
+#imageanakin {
+  width: 95%;
+  margin: 0px;
+  padding: 0px;
+  align-content: center;
+  position: absolute;
+  top: 0px;
+  left: 25px;
+  border-top: 4px solid black;
+}
+
+#body {
+  position: absolute;
+  top: 210px;
+  margin-left: 22%;
+  margin-right: 22%;
+}
+
+ul {
+  list-style-type: square;
+}
+
+hr {
+  height: 4px;
+  background-color: black;
+  width: 100%;
+}
+
+h1 {
+  font-family: serif;
+  font-size: 80px;
+  margin-top: -39px;
+  color: 282828;
+}
+
+h2 {
+  font-family: serif;
+  font-size: 39px;
+  color: 282828;
+}
+
+h3 {
+  font-size: 22px;
+}
+
+h4 {
+  font-size: 42px;
+  border: 2px solid #404040;
+  padding: 60px 35px;
+  color: white;
+  margin-left: -4%;
+  margin-right: -4%;
+  background-color: #404040;
+  background-image: url("quotationmark.jpg");
+  background-repeat: no-repeat;
+  background-position: left top;
+}
+
+h5 {
+  font-style: italic;
+  font-style: bold;
+  font-size: 18px;
+  margin-top: -20px;
+}
+
+h6 {
+  font-size: 22px;
+  padding-bottom: 15px;
+}
+
+#intro {
+  font-size: 20px;
+}
