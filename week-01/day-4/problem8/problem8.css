@@ -1,0 +1,35 @@
+h1 {
+  text-indent: 5px;
+}
+
+.box1 {
+  font-size: 18px;
+  border: 2px solid black;
+  margin: 20px;
+  padding: 20px 40px 20px 40px;
+  width:210px;
+  background-image: url("duck.png");
+  background-repeat: no-repeat;
+}
+
+.box2 {
+  font-size: 18px;
+  border: 2px solid black;
+  margin: 20px;
+  padding: 20px 40px 20px 40px;
+  width: 210px;
+  background-image: url("duck.png");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.box3 {
+  font-size: 18px;
+  border: 2px solid black;
+  margin: 20px;
+  padding: 20px 40px 20px 40px;
+  width: 210px;
+  background-image: url("duck.png");
+  background-repeat: no-repeat;
+  background-position: right;
+}

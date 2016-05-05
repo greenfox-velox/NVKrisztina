@@ -1,0 +1,20 @@
+ul {
+  list-style-type: square;
+}
+
+li {
+  color: blue;
+}
+
+ul.fruits li {
+  list-style-type: disc;
+  color: black;
+}
+
+ol.veggies li {
+  color: black;
+}
+
+ul #apple {
+  color: red;
+}

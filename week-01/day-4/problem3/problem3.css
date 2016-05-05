@@ -1,0 +1,28 @@
+.yellow {
+  color: blue;
+  background-color: yellow;
+  font-size: 28px;
+  width: 220px;
+  height: 30px;
+  margin: 0px;
+  padding: 24px 12px 16px 13px;
+  border: 4px solid black;
+}
+
+.blue {
+  color: red;
+  background-color: blue;
+  font-size: 28px;
+  width: 220px;
+  height: 30px;
+  margin: 0px;
+  padding: 24px 12px 16px 13px;
+  border: 4px solid black;
+}
+
+.box1 {
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: green;
+  width: 260px;
+}
