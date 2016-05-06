@@ -1,0 +1,55 @@
+h1 {
+  margin-top: 5%;
+  text-align:center;
+  color: 0080FF;
+  font-size: 50px;
+  font-family: fantasy,cursive,sans-serif;
+}
+
+h2 {
+  text-align: center;
+  color: 0081FF;
+  font-size: 40pxl;
+  font-family: Merriweather;
+}
+
+h3 {
+  font-style:italic;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+h4 {
+  font-size: 34px;
+  color: white;
+  font-weight: bolder;
+}
+
+li {
+  color: blue;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+div.div1 {
+  text-align: center;
+  font-size: 30pxl;
+  margin:0%;
+}
+
+
+div.div2 {
+  text-align: left;
+  margin-left: 20px;
+}
+
+img.kep1{
+  width: 60%;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+img.kep2{
+  width: 30%;
+  margin-left: 60%;
+}
