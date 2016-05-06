@@ -19,42 +19,47 @@
 
 ul {
   list-style-type: square;
+  font-family: 'Josefin Sans';
 }
 
 hr {
   height: 4px;
   background-color: black;
   width: 100%;
+  margin-top: 50px;
 }
 
 h1 {
-  font-family: serif;
-  font-size: 80px;
-  margin-top: -39px;
-  color: 282828;
+  font-family: 'Abril Fatface';
+  font-size: 78px;
+  margin-top: -44px;
+  color: #222;
 }
 
 h2 {
-  font-family: serif;
+  font-family: 'Abril Fatface';
   font-size: 39px;
-  color: 282828;
+  color: #222;
 }
 
 h3 {
   font-size: 22px;
+  font-family: 'Josefin Sans';
 }
 
 h4 {
-  font-size: 42px;
+  font-size: 48px;
   border: 2px solid #404040;
   padding: 60px 35px;
   color: white;
   margin-left: -4%;
   margin-right: -4%;
   background-color: #404040;
-  background-image: url("quotationmark.jpg");
+  background-image: url("lq2.png");
   background-repeat: no-repeat;
   background-position: left top;
+  background-size: 50px 50px;
+  font-family: 'Abril Fatface';
 }
 
 h5 {
@@ -62,13 +67,21 @@ h5 {
   font-style: bold;
   font-size: 18px;
   margin-top: -20px;
+  font-family: 'Josefin Sans';
 }
 
 h6 {
   font-size: 22px;
   padding-bottom: 15px;
+  font-family: 'Josefin Sans';
+}
+
+p {
+  font-family: 'Josefin Sans';
 }
 
 #intro {
   font-size: 20px;
+  font-family: 'Josefin Sans';
+  color: #222;
 }

@@ -1,0 +1,62 @@
+#sunset {
+  width: 100%;
+  position: absolute;
+  z-index: 0;
+}
+
+#body {
+  position: absolute;
+  top: 200px;
+  margin-left: 30px;
+}
+
+h1 {
+  font-size: 60px;
+  color: black;
+  font-family: 'Lobster';
+}
+
+h2 {
+  font-size: 30px;
+  font-style: italic;
+  margin-top: -30px;
+  font-family: 'Lobster';
+}
+
+h3 {
+  font-size: 28px;
+  font-family: 'Poiret One';
+}
+
+h4 {
+  font-style: italic;
+  margin-top: -20px;
+  font-family: 'Poiret One';
+  font-size: 21px;
+}
+
+ul {
+  font-family: 'Poiret One';
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.Personal {
+  margin-left: 820px;
+  margin-top: -250px;
+}
+
+.Interests {
+  margin-top: 140px;
+  margin-left: 40px;
+}
+
+.Hobbies {
+  margin-left: 820px;
+  margin-top: -350px;
+}
+
+.Career {
+  margin-top: 80px;
+  margin-left: 40px;
+}
