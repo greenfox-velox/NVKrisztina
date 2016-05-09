@@ -1,0 +1,62 @@
+.big{
+  width: 520px;
+  height: 730px;
+  margin: 0 auto;
+  border: 1px solid #FFFFFF;
+  padding: 20px 35px;
+  position: relative;
+}
+
+
+.blue{
+  background:#33CCFF;
+  width: inherit;
+  margin: 0 auto;
+  height: 100px;
+}
+
+.middle{
+  width:inherit;
+  height: 500px;
+}
+
+.orange{
+  background:#FF6600;
+  height: 500px;
+  margin: 0;
+  width: 100px;
+  float:left;
+}
+
+.red{
+  background:red;
+  height: 500px;
+  margin: 0;
+  width: 280px;
+  float:left;
+  margin-left: 20px;
+}
+
+.purple{
+  background:purple;
+  height: 500px;
+  margin: 0;
+  width: 100px;
+  float: right;
+}
+
+.sky{
+  background:blue;
+  width: inherit;
+  margin: 0 auto;
+  height: 100px;
+}
+
+.black{
+  background:black;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  bottom: 180px;
+  right: 180px;
+}

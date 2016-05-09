@@ -1,0 +1,112 @@
+#box{
+  border: 1px solid #000;
+  width: 480px;
+  height: 350px;
+  text-align: justify;
+  position:absolute;
+}
+
+.upper p{
+  margin: 20px;
+  border-bottom: 2px solid #000;
+  padding-bottom: 15px;
+  font-size: 18px;
+}
+
+.upper img{
+  padding: 10px;
+  float: left;
+}
+
+.lower p{
+  margin: 20px;
+  border-bottom: 2px solid #000;
+  padding-bottom: 15px;
+  font-size: 18px;
+}
+
+.lower img{
+  padding: 10px;
+  float: right;
+}
+
+.front{
+  width: 200px;
+  height:130px;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 0px;
+  position: absolute;
+  bottom: 190px;
+  left: 130px;
+  background-color: #FFFFFF;
+}
+
+.exclamation{
+  border-bottom: 2px solid black;
+  height: 18px;
+  padding: 6px 12px;
+  margin: 0;
+}
+
+.comment{
+  border-bottom: 2px solid black;
+  height: 25px;
+  padding: 8px 12px;
+}
+
+.option{
+  height: 30px;
+  padding: 8px 12px;
+  position: relative;
+}
+
+.option1{
+  background-color: grey;
+  border-radius: 18px;
+  width: 22px;
+  height: 28px;
+  text-align: center;
+  margin: 0px;
+  display: inline;
+  position: absolute;
+  left: 115px;
+  bottom: 30px;
+}
+
+.option2{
+  background-color: grey;
+  border-radius: 18px;
+  width: 50px;
+  height: 28px;
+  text-align: center;
+  margin: 0px;
+  display: inline;
+  position: absolute;
+  left: 145px;
+  bottom: 30px;
+}
+
+.option1 p, .option2 p{
+  margin: 0px;
+  padding-top: 3px;
+}
+
+
+.kor{
+  position: absolute;
+  background-color: black;
+  border: 1px solid black;
+  border-radius: 20px;
+  height: 20px;
+  width: 20px;
+  color: white;
+  text-align: center;
+  margin: 0px;
+  top: 18px;
+  left: 280px;
+}
+
+.kor p{
+  margin: 0px;
+}

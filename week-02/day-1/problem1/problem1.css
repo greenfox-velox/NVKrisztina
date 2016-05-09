@@ -1,0 +1,30 @@
+#box{
+  border: 1px solid #000;
+  width: 350px;
+  height: 470px;
+  text-align: justify;
+}
+
+.upper p{
+  margin: 20px;
+  border-bottom: 2px solid #000;
+  padding-bottom: 15px;
+  font-size: 18px;
+}
+
+.upper img{
+  padding: 10px;
+  float: left;
+}
+
+.lower p{
+  margin: 20px;
+  border-bottom: 2px solid #000;
+  padding-bottom: 15px;
+  font-size: 18px;
+}
+
+.lower img{
+  padding: 10px;
+  float: right;
+}
