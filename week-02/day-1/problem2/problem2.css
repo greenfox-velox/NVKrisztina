@@ -7,12 +7,14 @@
   position: relative;
 }
 
-
-.blue{
-  background:#33CCFF;
+.horizontal{
   width: inherit;
   margin: 0 auto;
   height: 100px;
+}
+
+.blue{
+  background:#33CCFF;
 }
 
 .middle{
@@ -20,18 +22,19 @@
   height: 500px;
 }
 
-.orange{
-  background:#FF6600;
+.vertical{
   height: 500px;
   margin: 0;
+}
+
+.orange{
+  background:#FF6600;
   width: 100px;
   float:left;
 }
 
 .red{
   background:red;
-  height: 500px;
-  margin: 0;
   width: 280px;
   float:left;
   margin-left: 20px;
@@ -39,17 +42,12 @@
 
 .purple{
   background:purple;
-  height: 500px;
-  margin: 0;
   width: 100px;
   float: right;
 }
 
 .sky{
   background:blue;
-  width: inherit;
-  margin: 0 auto;
-  height: 100px;
 }
 
 .black{
