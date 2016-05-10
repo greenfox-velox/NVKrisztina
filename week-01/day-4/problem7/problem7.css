@@ -2,7 +2,7 @@ h1 {
   text-indent: 5px;
 }
 
-.box1 {
+.box{
   font-size: 18px;
   border-left: 2px solid black;
   border-right: 2px solid black;
@@ -11,32 +11,15 @@ h1 {
   width:300px
 }
 
-.box2 {
-  font-size: 18px;
-  border-left: 2px solid black;
-  border-right: 2px solid black;
+
+.second{
   border-top: 2px solid black;
-  margin: 0px;
-  padding: 5px 10px 5px 10px;
-  width: 300px;
 }
 
-.box3 {
-  font-size: 18px;
-  border-left: 2px solid black;
-  border-right: 2px solid black;
+.third{
   border-top: 2px solid black;
-  margin: 0px;
-  padding: 5px 10px 5px 10px;
-  width: 300px;
 }
 
-.box4 {
-  font-size: 18px;
+.fourth{
   border-top: 2px solid black;
-  border-left: 2px solid black;
-  border-right: 2px solid black;
-  margin: 0px;
-  padding: 5px 10px 5px 10px;
-  width: 300px;
 }
