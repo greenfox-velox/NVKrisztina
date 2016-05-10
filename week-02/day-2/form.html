@@ -2,6 +2,7 @@
   <head>
     <link rel = "stylesheet" type = "text/css" href = "form.css"/>
     <meta charset="UTF-8">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
   </head>
 
   <body>
@@ -12,22 +13,22 @@
           <h2>Személyes adatok</h2>
           <form action="" method="post">
             <div>
-              <label for="name">Név</label><br>
+              <p><label for="name">Név</label></p>
               <input type="text" id="name" name="user_name/">
             </div>
             <div class="leftright">
               <div class="left">
-                <label for="date">Születési éved</label><br>
-                <input type="date" id="date" name="user_date/">
+                <p><label for="number">Születési éved</label><p/>
+                <input placeholder="pl. 1984" type="number" id="number" min="1900" max="2030" name="user_number/">
               </div>
               <div class="right">
-                <label for="gender">Nemed</label><br>
-                <input type="radio" id="gender" value="nő" name="user_gender/">
-                <input type="radio" id="gender" value="férfi" name="user_gender/">
+                <p><label for="gender">Nemed</label></p>
+                <input type="radio" id="gender" value="nő" name="user_gender/">Nő
+                <input type="radio" id="gender" value="férfi" name="user_gender/">Férfi
               </div>
             </div>
             <div>
-              <label for="brand">Milyen márkákat szeretsz?</label><br>
+              <p><label for="brand">Milyen márkákat szeretsz?</label></p>
               <div class="checkleft">
                 <label><input type="checkbox" id="brand" value="Adidas" name="user_brand/">Adidas</label><br>
                 <label><input type="checkbox" id="brand" value="Apple" name="user_brand/">Apple</label><br>
@@ -43,17 +44,58 @@
                 <label><input type="checkbox" id="brand" value="Yahoo" name="user_brand/">Yahoo</label><br>
               </div>
             </div>
-            <p>Többet is választhatsz!</p>
+            <p style="color:#888888;">Többet is választhatsz!</p>
           </form>
         </div>
         <div class="column2">
           <h2>Kapcsolat</h2>
+          <form action="" method="post">
+            <div>
+              <p><label for="tel">Telefonszám</label></p>
+              <input placeholder="+36 -- --- ----" type="tel" id="tel" name="user_tel/">
+            </div>
+            <div>
+              <p><label for="email">E-mail cím</label></p>
+              <input placeholder="nev@domain.hu" type="email" id="email" name="user_email/">
+            </div>
+            <div>
+              <p><label for="facebook">Facebook profilod</label></p>
+              <input placeholder="http://facebook.com/..." type="url" id="facebook" name="user_facebook/">
+            </div>
+            <div>
+              <p><label for="twitter">Twitter profilod</label></p>
+              <input placeholder="http://twitter.com/..." type="url" id="twitter" name="user_twitter/">
+            </div>
+            <div>
+              <p><label for="house">Milyen házban laksz?</label></p>
+              <select required id="house" name="user_house/">
+                <option value="" disabled selected>Válassz típust!</option>
+                <option value="kertes">kertes</option>
+                <option value="törpike">törpike</option>
+                <option value="palota">palota</option>
+              </select>
+            </div>
+          </form>
         </div>
       </div>
-      <div class="container2"></div>
+      <div class="container2">
+        <p><label for="introduction">Bemutatkozás</label></p>
+        <textarea placeholder="Írj magadról pár mondatot!" id="introduction" rows="10" cols="89" name="introduction/"></textarea>
+      </div>
       <div class="container3">
-        <div class="column3"></div>
-        <div class="column4"></div>
+        <div class="column3">
+          <p><label for="CV">CV feltöltése</label></p>
+          <input type="button" id="filechoice" onclick="alert('Inkább most aludj egyet!')" value="FILE KIVÁLASZTÁSA"><br>
+          <p><label><input type="checkbox" id="accept" value="accept" name="user_accept/">Elfogadom a <a href="http://www.nestle.hu/info/felhasznalasi">felhasználási feltételeket</a></label></p>
+          <div>
+            <button class="button dark" type="submit">MENTÉS</button>
+          </div>
+        </div>
+        <div class="column4">
+          <div>
+            <button class="button white" type="reset">ŰRLAP TÖRLÉSE</button>
+          </div>
+        </div>
       </div>
       </div>
     </div>
