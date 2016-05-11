@@ -1,0 +1,31 @@
+.containerbig{
+  border: 1px solid black;
+  display: inline-flex;
+}
+
+aside{
+  width: 160px;
+  border: 1px solid red;
+}
+
+main{
+  border: 1px solid blue;
+  width: 100%;
+  display: inline-flex;
+  flex-flow: column;
+}
+
+header{
+  height: 80px;
+  border: 1px solid purple;
+}
+
+article{
+  border: 1px solid green;
+
+}
+
+footer{
+  height: 150px;
+  border: 1px solid orange;
+}

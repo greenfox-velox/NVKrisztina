@@ -5,9 +5,9 @@ article{
 }
 
 section{
-  width: 140px;
+  width: 160px;
   height: 100%;
-  border: 1px solid black;
+  border: 1px solid blue;
 }
 
 header{
