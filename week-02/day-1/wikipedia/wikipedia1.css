@@ -7,6 +7,10 @@ body{
   font-family: sans-serif;
 }
 
+a{
+  text-decoration: none;
+}
+
 p{
   font-size: 14px;
   line-height: 1.8em;
@@ -17,8 +21,9 @@ aside{
   border-right: 1px solid #A7D7F9;
   padding-left:26px;
   padding-right: 20px;
-  background-color: #DDDDFF;
+  background-color: #F6F6F6;
   font-size: 12px;
+  line-height: 1.6em;
 }
 
 #logo{
@@ -28,7 +33,7 @@ aside{
 .sidebox{
   display: flex;
   flex-flow: column;
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid #DBDBDB;
   padding-bottom: 12px;
   padding-top: 5px;
 }
@@ -49,9 +54,44 @@ main{
   flex-flow: column;
 }
 
-.image{
+.contentsheader{
+  text-align: center;
+}
+
+.contents li:first-child{
+  line-height: normal;
+}
+
+.contents{
+  height: 265px;
+  width: 120px;
+  border: 1px solid #AAAAAA;
+  background-color: #F9F9F9;
+  font-size: 13px;
+  padding: 6px;
+  line-height: 2em;
+}
+
+.contents a{
+  line-height: 10px;
+}
+
+.contents ol{
+  counter-reset: item;
+  padding-left: 5px;
+}
+
+.contents li{
+  display: block;
+}
+
+.contents li:before {
+  content: counters(item, ".") " "; counter-increment: item;
+}
+
+.image1{
   float: right;
-  border: 1px solid grey;
+  border: 1px solid #AAAAAA;
   width: 270px;
   height: 520px;
   margin-left: 26px;
@@ -61,7 +101,83 @@ main{
 .first{
   width: 220px;
   height: 277px;
-  margin: 30px 26px 214px;
+  margin-left: 26px;
+  margin-right: 26px;
+}
+
+.imageheader{
+  font-size: 14px;
+  text-align: center;
+  padding: 5px;
+}
+
+.imagefooter{
+  font-size: 12px;
+  text-align: center;
+  padding: 2px;
+}
+
+table{
+  font-size: 13px;
+  padding: 3px 4px 5px;
+}
+
+th{
+  vertical-align: text-top;
+  text-align: left;
+}
+
+.image2{
+  float: right;
+  border: 1px solid #AAAAAA;
+  background-color: #F9F9F9;
+  width: 226px;
+  height: 221px;
+  margin-left: 26px;
+}
+
+.second{
+  width: 220px;
+  height: 170px;
+  margin: 3px;
+}
+
+.nocenter{
+  text-align: left;
+  padding: 3px;
+  line-height: 1.5em;
+}
+
+.image3{
+  float: right;
+  border: 1px solid #AAAAAA;
+  background-color: #F9F9F9;
+  width: 226px;
+  height: 346px;
+  margin-left: 26px;
+}
+
+.third{
+  width: 220px;
+  height: 280px;
+  margin: 2px;
+  border: 1px solid #AAAAAA;
+}
+
+.image4{
+  float: right;
+  margin-left: 26px;
+  border: 1px solid #AAAAAA;
+  background-color: #F9F9F9;
+  width: 186px;
+  height: 286px;
+}
+
+.fourth{
+  border: 1px solid #AAAAAA;
+  width: 180px;
+  height: 238px;
+  margin: 2px;
 }
 
 header{
@@ -123,7 +239,7 @@ article{
 }
 
 h1, h2{
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid #AAAAAA;
 }
 
 h1 {
