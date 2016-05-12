@@ -6,6 +6,7 @@
 aside{
   width: 160px;
   border: 1px solid red;
+  background-color: #DDDDFF;
 }
 
 main{
@@ -15,14 +16,84 @@ main{
   flex-flow: column;
 }
 
+.image{
+  float: right;
+  border: 1px solid grey;
+  width: 270px;
+  height: 520px;
+  margin-left: 26px;
+  background-color: #F9F9F9;
+}
+
+.first{
+  width: 220px;
+  height: 277px;
+  margin: 30px 26px 214px;
+}
+
 header{
   height: 80px;
   border: 1px solid purple;
+  background-color: #F6F6F6;
+}
+
+.headerupper{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.headerlower{
+  display: flex;
+  justify-content: space-between;
+}
+
+.headerlowerleft{
+  display: flex;
+}
+
+.headerlowerright{
+  display: flex;
+}
+
+.box{
+  height: 40px;
+  display: flex;
+  padding-right: 23px;
+}
+
+.infolog{
+  color: grey;
+}
+
+.linkupper{
+  padding: 5px 3px 8px;
+  text-decoration: none;
+}
+
+.linklower{
+    padding: 12px 3px 1px;
+    text-decoration: none;
+    display: inline;
+}
+
+.search{
+  width: 297px;
+  height: 24px;
+  margin: 10px 3px 4px;
 }
 
 article{
   border: 1px solid green;
+  padding-left: 26px;
+  padding-right: 26px;
+}
 
+h1, h2{
+  border-bottom: 1px solid grey;
+}
+
+h1 {
+  font-size: 36px;
 }
 
 footer{
