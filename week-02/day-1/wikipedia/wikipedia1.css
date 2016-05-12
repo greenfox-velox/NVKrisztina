@@ -1,10 +1,11 @@
 .containerbig{
-  border: 1px solid black;
   display: inline-flex;
+  margin: 0px;
 }
 
 body{
   font-family: sans-serif;
+  margin: 0px;
 }
 
 a{
@@ -48,7 +49,6 @@ aside{
 }
 
 main{
-  border: 1px solid blue;
   width: 100%;
   display: inline-flex;
   flex-flow: column;
@@ -56,23 +56,16 @@ main{
 
 .contentsheader{
   text-align: center;
-}
-
-.contents li:first-child{
-  line-height: normal;
+  padding-top: 6px;
 }
 
 .contents{
-  height: 265px;
+  height: 263px;
   width: 120px;
   border: 1px solid #AAAAAA;
   background-color: #F9F9F9;
   font-size: 13px;
   padding: 6px;
-  line-height: 2em;
-}
-
-.contents a{
   line-height: 10px;
 }
 
@@ -83,6 +76,7 @@ main{
 
 .contents li{
   display: block;
+  line-height: 20px;
 }
 
 .contents li:before {
@@ -224,6 +218,11 @@ header{
     padding: 12px 3px 1px;
     text-decoration: none;
     display: inline;
+    border-right: 1px solid #A7D7F9;
+}
+
+.leftlink{
+  border-left: 1px solid #A7D7F9;
 }
 
 .search{
@@ -233,20 +232,29 @@ header{
 }
 
 article{
-  border: 1px solid green;
   padding-left: 26px;
   padding-right: 26px;
 }
 
 h1, h2{
   border-bottom: 1px solid #AAAAAA;
+  font-family: "Times New Roman";
+  font-weight: normal;
 }
 
 h1 {
   font-size: 36px;
 }
 
+.source{
+  padding-left: 25px;
+}
+
 footer{
   height: 150px;
-  border: 1px solid orange;
+}
+
+.footer2{
+  display: flex;
+  justify-content: space-between;
 }
