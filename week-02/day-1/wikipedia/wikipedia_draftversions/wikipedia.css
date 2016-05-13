@@ -1,0 +1,30 @@
+article{
+  position: relative;
+  height: auto;
+  width: auto;
+}
+
+section{
+  width: 160px;
+  height: 100%;
+  border: 1px solid blue;
+}
+
+header{
+  height: 80px;
+  width: 100%;
+  border: 1px solid black;
+  position: absolute;
+}
+
+main{
+
+}
+
+footer{
+  height: 140px;
+  width: 100%;
+  border: 1px solid red;
+  position: absolute;
+  bottom: 0px;
+}
