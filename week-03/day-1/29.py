@@ -9,3 +9,18 @@ elif credits < 50 and is_bonus == False:
 elif is_bonus == True:
     ab == ab
 print (ab)
+
+"""
+if not is_bonus:
+    if credits > 50:
+        ab -= 2
+    else:
+        ab -= 1
+
+if is_bonus:
+    pass
+elif credits > 50:
+    ab -= 2
+else:
+    ab -= 1
+"""

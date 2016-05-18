@@ -1,5 +1,12 @@
 ad = 6
 
-while ad > 0:
-    ad = ad - 1
-    print (ad)
+l = 0
+while l > ad:
+    l += 1
+    print (l)
+
+for i in range(6, 0, -1):
+    print (i)
+
+for i in range(ad + 1):
+    print (i)

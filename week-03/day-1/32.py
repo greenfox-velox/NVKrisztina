@@ -2,6 +2,9 @@ ae = 4
 text = 'Gold'
 
 while ae > 0:
-    str(text) = str(text) - 1
+    ae = ae - 1
     print (text)
-# not working yet
+
+
+for i in range(ae):
+    print (text)
