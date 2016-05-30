@@ -6,6 +6,9 @@ class Test(unittest.TestCase):
     def test_anagramm(self):
         self.assertTrue(anagramm('Alma', 'mala'))
 
+    def test_anagram_numbers(self):
+        self.assertTrue(anagramm('123', '321'))
+
 
     def test_count_letters(self):
         dict = {'l': 1, 'a': 2}

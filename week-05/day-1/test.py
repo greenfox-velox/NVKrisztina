@@ -47,7 +47,7 @@ class TestExtend(unittest.TestCase):
     def test_translate_kolbice(self):
         self.assertEqual(extend.translate('kolbice'), 'kovolbiviceve')
 
-    def test_translate_kualalumpur(self):
+    def test_translate_koala(self):
         self.assertEqual(extend.translate('koala'), 'kovoavalava')
 
 if __name__ == '__main__':

@@ -24,13 +24,17 @@ print(median([1, 2, 3, 4]))
 
 # Returns true if the param is a vovel
 def is_vovel(char):
-    return char.lower() in 'aeiou'
+    return char.lower() in 'aeiouáéúűőóüöí'
 
 # Create a method that translates hungarian into the teve language
-def translate(hungarian):
-    teve = hungarian
-    tev = ''
-    for char in teve:
-        if is_vovel(char):
-            teve = (char+'v'+char).join(teve.split(char))
-    return teve
+def translate(string):
+    new = ''
+    for char in string:
+        if not is_vovel(char):
+            new = new + char
+        else:
+            char = char + 'v' + char
+            new = new + char
+    return new
+
+print(translate('koala'))

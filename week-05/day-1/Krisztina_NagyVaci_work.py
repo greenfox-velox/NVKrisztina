@@ -6,19 +6,19 @@ def anagramm(input1, input2):
     input2 = input2.lower()
     for i in input1:
         for j in input2:
-            if i != j:
+            if i == int():
+                pass
+            elif i != j:
                 pass
             else:
                 newInput1 = input1.replace(i, '')
                 newInput2 = input2.replace(j, '')
                 input1 = newInput1
                 input2 = newInput2
-    print (newInput1)
-    print (newInput2)
     if newInput1 == newInput2:
-        return 'True'
+        return True
     else:
-        return 'False'
+        return False
 
 print(anagramm('Alma', 'malas'))
 
