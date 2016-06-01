@@ -1,6 +1,6 @@
 import sys, getopt
 
-def use(this_filename):
+def commands(this_filename):
     print('Python Todo application\n'
     '=======================\n'
 
@@ -10,23 +10,23 @@ def use(this_filename):
      '-r   Removes a task\n'
      '-c   Completes a task\n')
 
-def text_open(filename):
-    f = open(filename)
-    text = f.readlines()
-    f.close()
 
-def list_print(filename):
+def list_opener(filename):
     f = open(filename)
     text = f.readlines()
     f.close()
+    if len(sys.argv) == 1:
+        return commands(sys.argv)
     if text != '':
         if sys.argv[1] == '-l':
             for i in range(len(text)):
-                print ((str(i + 1) + ' ' + text[i]).rstrip())
+                print (str(i + 1) + text[i])
     else:
         print ('No todos for today! :)')
+list_opener('todos_stored.txt')
 
-def list_append(filename):
+
+def a(filename):
     f = open(filename)
     text = f.readlines()
     f.close()
@@ -37,8 +37,9 @@ def list_append(filename):
                 print (text)
         except:
             print ('Unable to add: No task is provided')
+a('todos_stored.txt')
 
-def list_remove(filename):
+def r(filename):
     f = open(filename)
     text = f.readlines()
     f.close()
@@ -50,14 +51,7 @@ def list_remove(filename):
                     print (text)
         else:
             print ('Unable to remove: Index is out of bound')
-    elif sys.argv[1] == '-r':
+    else:
         print ('Unable to remove: No index is provided')
 
-def execute(filename):
-    text_open('todos_stored.txt')
-    if len(sys.argv) == 1:
-        return use(sys.argv)
-    list_print('todos_stored.txt')
-    list_append('todos_stored.txt')
-    list_remove('todos_stored.txt')
-execute('todos_stored.txt')
+r('todos_stored.txt')
