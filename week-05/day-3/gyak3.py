@@ -55,3 +55,40 @@ def r(filename):
         print ('Unable to remove: No index is provided')
 
 r('todos_stored.txt')
+
+
+
+
+
+if sys.argv[1] == '-r':
+    if len(sys.argv) == 3:
+        if len(text) >= int(sys.argv[2]):
+            for n in range(len(text)):
+                if int(sys.argv[2]) - 1 == int(n):
+                    text.remove(text[n])
+                    print (text)
+        elif sys.argv
+        else:
+            print ('Unable to remove: Index is out of bound')
+    elif sys.argv[2] == str:
+        print ('Unable to remove: Index is not a number')
+    else:
+        print ('Unable to remove: No index is provided')
+
+
+
+        f.close()
+        if sys.argv[1] == '-r':
+            if len(sys.argv) == 3:
+                if int(sys.argv[2]):
+                    if len(text) >= int(sys.argv[2]):
+                        for n in range(len(text)):
+                            if int(sys.argv[2]) - 1 == int(n):
+                                text.remove(text[n])
+                                print (text)
+                    else:
+                        print ('Unable to remove: Index is out of bound')
+                elif sys.argv[2] == str:
+                    print ('Unable to remove: Index is not a number')
+            else:
+                print ('Unable to remove: No index is provided')

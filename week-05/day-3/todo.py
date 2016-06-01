@@ -42,16 +42,21 @@ def list_remove(filename):
     f = open(filename)
     text = f.readlines()
     f.close()
-    if sys.argv[1] == '-r' and len(sys.argv) == 3:
-        if len(text) >= int(sys.argv[2]):
-            for n in range(len(text)):
-                if int(sys.argv[2]) - 1 == int(n):
-                    text.remove(text[n])
-                    print (text)
+    if sys.argv[1] == '-r':
+        if len(sys.argv) == 3:
+            try:
+                if int(sys.argv[2]):
+                    if len(text) >= int(sys.argv[2]):
+                        for n in range(len(text)):
+                            if int(sys.argv[2]) - 1 == int(n):
+                                text.remove(text[n])
+                                print (text)
+                    else:
+                        print ('Unable to remove: Index is out of bound')
+            except:
+                print ('Unable to remove: Index is not a number')
         else:
-            print ('Unable to remove: Index is out of bound')
-    elif sys.argv[1] == '-r':
-        print ('Unable to remove: No index is provided')
+            print ('Unable to remove: No index is provided')
 
 def execute(filename):
     text_open('todos_stored.txt')
