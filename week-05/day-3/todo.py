@@ -78,8 +78,8 @@ class ToDo:
                         if len(text) >= int(self.this_filename[2]):
                             for n in range(len(text)):
                                 if int(self.this_filename[2]) - 1 == int(n):
-                                    text.remove(text[n])
-                                    print (text)
+                                    n = (str(n + 1) + ' ' + chr(91) + 'x' + chr(93) + ' ' + text[n]).rstrip()
+                                print (n)    
                         else:
                             print ('Unable to check: Index is out of bound')
                 except:
