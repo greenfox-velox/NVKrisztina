@@ -1,4 +1,5 @@
 import sys
+import csv
 
 class ToDo:
 
@@ -18,23 +19,21 @@ class ToDo:
              '-c   Completes a task\n')
 
     def text_open(self):
-        import os.path
-        os.path.exists(self.filename)
         try:
-            f = open(self.filename)
-            text = f.readlines()
-            f.close()
-            return text
+            ifile = open(self.filename)
+            text1 = csv.reader(ifile)
+            text = []
+            for i in text1:
+                text = text + [i[2]]
+            return (text)
         except FileNotFoundError:
-            k = open('new_file.txt', 'w')
-            text = k.write('')
+            k = open(self.filename, 'w')
+            k.write('')
             k.close()
-            return text
+            return ''
 
     def list_print(self):
-        f = open(self.filename)
-        text = f.readlines()
-        f.close()
+        text = self.text_open()
         if text != '':
             if self.this_filename[1] == '-l':
                 for i in range(len(text)):
@@ -43,9 +42,7 @@ class ToDo:
             print ('No todos for today! :)')
 
     def list_append(self):
-        f = open(self.filename)
-        text = f.readlines()
-        f.close()
+        text = self.text_open()
         if self.this_filename[1] == '-a':
             try:
                 if self.this_filename[2]:
@@ -55,9 +52,7 @@ class ToDo:
                 print ('Unable to add: No task is provided')
 
     def list_remove(self):
-        f = open(self.filename)
-        text = f.readlines()
-        f.close()
+        text = self.text_open()
         if self.this_filename[1] == '-r':
             if len(self.this_filename) == 3:
                 try:
@@ -74,19 +69,42 @@ class ToDo:
             else:
                 print ('Unable to remove: No index is provided')
 
+    def list_check(self):
+        text = self.text_open()
+        if self.this_filename[1] == '-c':
+            if len(self.this_filename) == 3:
+                try:
+                    if int(self.this_filename[2]):
+                        if len(text) >= int(self.this_filename[2]):
+                            for n in range(len(text)):
+                                if int(self.this_filename[2]) - 1 == int(n):
+                                    text.remove(text[n])
+                                    print (text)
+                        else:
+                            print ('Unable to check: Index is out of bound')
+                except:
+                    print ('Unable to check: Index is not a number')
+            else:
+                print ('Unable to check: No index is provided')
+
     def list_ignore(self):
-        f = open(self.filename)
-        text = f.readlines()
-        f.close()
+        text = self.text_open()
         if self.this_filename[1] != '-l':
             if self.this_filename[1] != '-a':
                 if self.this_filename[1] != '-r':
-                    print ('Unsupported argument')
-                    # return use(self.this_filename)
+                    if self.this_filename[1] != '-c':
+                        print ('Unsupported argument')
+                        return self.use()
 
-this_toDo = ToDo('todos_stored.txt', 'sys.argv')
+    def execute(self):
+        if len(sys.argv) == 1:
+            return self.use()
+        self.list_print()
+        self.list_append()
+        self.list_remove()
+        self.list_ignore()
+        self.list_check()
 
-this_toDo.list_print()
-this_toDo.list_append()
-this_toDo.list_remove()
-this_toDo.list_ignore()
+this_toDo = ToDo('todos_done.csv', sys.argv)
+
+this_toDo.execute()

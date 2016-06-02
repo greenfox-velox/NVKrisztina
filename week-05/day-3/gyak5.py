@@ -11,8 +11,6 @@ def use(this_filename):
      '-c   Completes a task\n')
 
 def text_open(filename):
-    import os.path
-    os.path.exists(filename)
     try:
         f = open(filename)
         text = f.readlines()
@@ -20,14 +18,13 @@ def text_open(filename):
         return text
     except FileNotFoundError:
         k = open('new_file.txt', 'w')
-        text = k.write('')
+        k.write('')
         k.close()
-        return text
+        return ''
+
 
 def list_print(filename):
-    f = open(filename)
-    text = f.readlines()
-    f.close()
+    text=text_open(filename)
     if text != '':
         if sys.argv[1] == '-l':
             for i in range(len(text)):
@@ -36,7 +33,7 @@ def list_print(filename):
         print ('No todos for today! :)')
 
 def list_append(filename):
-    text_open(filename)
+    text=text_open(filename)
     if sys.argv[1] == '-a':
         try:
             if sys.argv[2]:
@@ -46,7 +43,7 @@ def list_append(filename):
             print ('Unable to add: No task is provided')
 
 def list_remove(filename):
-    text_open(filename)
+    text=text_open(filename)
     if sys.argv[1] == '-r':
         if len(sys.argv) == 3:
             try:
@@ -64,7 +61,7 @@ def list_remove(filename):
             print ('Unable to remove: No index is provided')
 
 def list_ignore(filename):
-    text_open(filename)
+    text=text_open(filename)
     if sys.argv[1] != '-l':
         if sys.argv[1] != '-a':
             if sys.argv[1] != '-r':

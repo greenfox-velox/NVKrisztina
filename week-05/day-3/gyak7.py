@@ -1,6 +1,4 @@
 import sys
-import csv
-
 
 def use(this_filename):
     print('Python Todo application\n'
@@ -13,20 +11,17 @@ def use(this_filename):
      '-c   Completes a task\n')
 
 def text_open(filename):
-    import os.path
-    os.path.exists(filename)
     try:
-        f = open(filename)
-        text = f.readlines()
-        f.close()
+        ifile = open('todos_done.csv', 'rt')
+        text = csv.reader(ifile)
         return text
     except FileNotFoundError:
-        k = open('new_file.txt', 'w')
-        text = k.write('')
+        k = open('new_file.csv', 'w')
+        k.write('')
         k.close()
-        return text
+        return ''
 
-def list_print(filename_csv):
+def list_print(filename):
     ifile = open('todos_done.csv', 'rt')
     read = csv.reader(ifile)
     if read != '':
@@ -36,11 +31,8 @@ def list_print(filename_csv):
     else:
         print ('No todos for today! :)')
 
-def list_check(filename):
-    
-
 def list_append(filename):
-    text_open(filename)
+    text=text_open(filename)
     if sys.argv[1] == '-a':
         try:
             if sys.argv[2]:
@@ -50,7 +42,7 @@ def list_append(filename):
             print ('Unable to add: No task is provided')
 
 def list_remove(filename):
-    text_open(filename)
+    text=text_open(filename)
     if sys.argv[1] == '-r':
         if len(sys.argv) == 3:
             try:
@@ -68,7 +60,7 @@ def list_remove(filename):
             print ('Unable to remove: No index is provided')
 
 def list_ignore(filename):
-    text_open(filename)
+    text=text_open(filename)
     if sys.argv[1] != '-l':
         if sys.argv[1] != '-a':
             if sys.argv[1] != '-r':
