@@ -11,93 +11,141 @@ photo2 = PhotoImage(file = "hero-down.png")
 photo3 = PhotoImage(file = "hero-right.png")
 photo4 = PhotoImage(file = "hero-left.png")
 photo5 = PhotoImage(file = "hero-up.png")
-# label = Label(image=photo)
-# label.image = photo
-# label.pack()
 
-# canvas.create_image(0, 0, anchor = NW, image=photo0)
-# canvas.create_image(0, 0, anchor = NW, image=photo1)
+class Floor:
 
-def gameScreen():
+    def __init__(self, x, y):
+            self.x = x
+            self.y = y
+            self.type = 'Floor'
 
-    map1 = [[0, 0, 1, 0, 0, 1, 0, 0, 0, 1],
-    [0, 0, 1, 0, 0, 1, 0, 0, 0, 1],
-    [0, 0, 1, 0, 0, 1, 0, 0, 0, 0],
-    [0, 0, 1, 0, 0, 1, 0, 1, 0, 1],
-    [0, 1, 1, 1, 0, 0, 0, 0, 0, 1],
-    [0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 1, 0, 0, 1, 0, 1, 0, 0],
-    [0, 0, 1, 0, 0, 0, 0, 1, 0, 1],
-    [0, 0, 1, 0, 0, 1, 0, 1, 0, 0],
-    [1, 1, 1, 0, 0, 1, 0, 0, 0, 1]]
+    def draw(self):
+        canvas.create_image(self.x * 72, self.y * 72, anchor = NW, image = photo0)
 
-    for i in range(10):
-        for j in range(10):
-            if map1[i][j] == 0:
-                canvas.create_image(i * 72, j * 72, anchor = NW, image = photo0)
-            else:
-                canvas.create_image(i * 72, j * 72, anchor = NW, image = photo1)
+class Wall:
 
-gameScreen()
+    def __init__(self, x, y):
+            self.x = x
+            self.y = y
+            self.type = 'Wall'
 
-playerposition = [0, 0]
-canvas.create_image(playerposition[0], playerposition[1], anchor = NW, image = photo2)
+    def draw(self):
+        canvas.create_image(self.x * 72, self.y * 72, anchor = NW, image = photo1)
 
-def move_down(event):
-    if playerposition[1] != 9 * 72:
-        gameScreen()
-        playerposition[1] = playerposition[1] + 72
-        canvas.create_image(playerposition[0], playerposition[1], anchor = NW, image = photo2)
-    else:
-        gameScreen()
-        playerposition[1] = playerposition[1]
-        canvas.create_image(playerposition[0], playerposition[1], anchor = NW, image = photo2)
+class Coordinates:
 
-master.bind("<Down>", move_down)
+    def __init__(self):
+        self.map1 = [[0, 0, 1, 0, 0, 1, 0, 0, 0, 1],
+        [0, 0, 1, 0, 0, 1, 0, 0, 0, 1],
+        [0, 0, 1, 0, 0, 1, 0, 0, 0, 0],
+        [0, 0, 1, 0, 0, 1, 0, 1, 0, 1],
+        [0, 1, 1, 1, 0, 0, 0, 0, 0, 1],
+        [0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 1, 0, 0, 1, 0, 1, 0, 0],
+        [0, 0, 1, 0, 0, 0, 0, 1, 0, 1],
+        [0, 0, 1, 0, 0, 1, 0, 1, 0, 0],
+        [1, 1, 1, 0, 0, 1, 0, 0, 0, 1]]
 
-def move_right(event):
-    if playerposition[0] != 9 * 72:
-        gameScreen()
-        playerposition[0] = playerposition[0] + 72
-        canvas.create_image(playerposition[0], playerposition[1], anchor = NW, image = photo3)
-    else:
-        gameScreen()
-        playerposition[0] = playerposition[0]
-        canvas.create_image(playerposition[0], playerposition[1], anchor = NW, image = photo3)
+    def putFloorAndWallCoordinatesInaList(self):
+        out = []
+        for x in range(10):
+            for y in range(10):
+                if self.map1[y][x] == 0:
+                    floor = Floor(x, y)
+                    out.append(floor)
+                else:
+                    wall = Wall(x, y)
+                    out.append(wall)
+        return out
 
-master.bind("<Right>", move_right)
+    def gameScreenDraw(self):
+        a = self.putFloorAndWallCoordinatesInaList()
+        for i in a:
+            i.draw()
 
-def move_left(event):
-    if playerposition[0] != 0:
-        gameScreen()
-        playerposition[0] = playerposition[0] - 72
-        canvas.create_image(playerposition[0], playerposition[1], anchor = NW, image = photo4)
-    else:
-        gameScreen()
-        playerposition[0] = playerposition[0]
-        canvas.create_image(playerposition[0], playerposition[1], anchor = NW, image = photo4)
+coordinates = Coordinates()
+coordinates.gameScreenDraw()
 
-master.bind("<Left>", move_left)
+class Hero:
 
-def move_up(event):
-    if playerposition[1] != 0:
-        gameScreen()
-        playerposition[1] = playerposition[1] - 72
-        canvas.create_image(playerposition[0], playerposition[1], anchor = NW, image = photo5)
-    else:
-        gameScreen()
-        playerposition[1] = playerposition[1]
-        canvas.create_image(playerposition[0], playerposition[1], anchor = NW, image = photo5)
+    def __init__(self, playerposition):
+        self.playerposition = playerposition
+        self.image = photo2
 
-master.bind("<Up>", move_up)
+    def draw(self):
+        canvas.create_image(self.playerposition[0], self.playerposition[1], anchor = NW, image = self.image)
+
+    def move_down(self):
+        if self.playerposition[1] != 9 * 72:
+            coordinates.gameScreenDraw()
+            self.playerposition[1] = self.playerposition[1] + 72
+            self.image = photo2
+            self.draw()
+        else:
+            coordinates.gameScreenDraw()
+            self.playerposition[1] = self.playerposition[1]
+            self.image = photo2
+            self.draw()
+
+    def move_right(self):
+        if self.playerposition[0] != 9 * 72:
+            coordinates.gameScreenDraw()
+            self.playerposition[0] = self.playerposition[0] + 72
+            self.image = photo3
+            self.draw()
+        else:
+            coordinates.gameScreenDraw()
+            self.playerposition[0] = self.playerposition[0]
+            self.image = photo3
+            self.draw()
+
+    def move_left(self):
+        if self.playerposition[0] != 0:
+            coordinates.gameScreenDraw()
+            self.playerposition[0] = self.playerposition[0] - 72
+            self.image = photo4
+            self.draw()
+        else:
+            coordinates.gameScreenDraw()
+            self.playerposition[0] = self.playerposition[0]
+            self.image = photo4
+            self.draw()
+
+    def move_up(self):
+        if self.playerposition[1] != 0:
+            coordinates.gameScreenDraw()
+            self.playerposition[1] = self.playerposition[1] - 72
+            self.image = photo5
+            self.draw()
+        else:
+            coordinates.gameScreenDraw()
+            self.playerposition[1] = self.playerposition[1]
+            self.image = photo5
+            self.draw()
+
+def move_up_press_key(event):
+    hero.move_up()
+
+master.bind("<Up>", move_up_press_key)
+
+def move_left_press_key(event):
+    hero.move_left()
+
+master.bind("<Left>", move_left_press_key)
+
+def move_right_press_key(event):
+    hero.move_right()
+
+master.bind("<Right>", move_right_press_key)
+
+def move_down_press_key(event):
+    hero.move_down()
+
+master.bind("<Down>", move_down_press_key)
 
 
 
-
-
-
-
-
-
+hero = Hero([0, 0])
+hero.draw()
 
 master.mainloop()
