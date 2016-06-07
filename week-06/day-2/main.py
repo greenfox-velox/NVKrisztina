@@ -44,30 +44,50 @@ playerposition = [0, 0]
 canvas.create_image(playerposition[0], playerposition[1], anchor = NW, image = photo2)
 
 def move_down(event):
-    gameScreen()
-    playerposition[1] = playerposition[1] + 72
-    canvas.create_image(playerposition[0], playerposition[1], anchor = NW, image = photo2)
+    if playerposition[1] != 9 * 72:
+        gameScreen()
+        playerposition[1] = playerposition[1] + 72
+        canvas.create_image(playerposition[0], playerposition[1], anchor = NW, image = photo2)
+    else:
+        gameScreen()
+        playerposition[1] = playerposition[1]
+        canvas.create_image(playerposition[0], playerposition[1], anchor = NW, image = photo2)
 
 master.bind("<Down>", move_down)
 
 def move_right(event):
-    gameScreen()
-    playerposition[0] = playerposition[0] + 72
-    canvas.create_image(playerposition[0], playerposition[1], anchor = NW, image = photo3)
+    if playerposition[0] != 9 * 72:
+        gameScreen()
+        playerposition[0] = playerposition[0] + 72
+        canvas.create_image(playerposition[0], playerposition[1], anchor = NW, image = photo3)
+    else:
+        gameScreen()
+        playerposition[0] = playerposition[0]
+        canvas.create_image(playerposition[0], playerposition[1], anchor = NW, image = photo3)
 
 master.bind("<Right>", move_right)
 
 def move_left(event):
-    gameScreen()
-    playerposition[0] = playerposition[0] - 72
-    canvas.create_image(playerposition[0], playerposition[1], anchor = NW, image = photo4)
+    if playerposition[0] != 0:
+        gameScreen()
+        playerposition[0] = playerposition[0] - 72
+        canvas.create_image(playerposition[0], playerposition[1], anchor = NW, image = photo4)
+    else:
+        gameScreen()
+        playerposition[0] = playerposition[0]
+        canvas.create_image(playerposition[0], playerposition[1], anchor = NW, image = photo4)
 
 master.bind("<Left>", move_left)
 
 def move_up(event):
-    gameScreen()
-    playerposition[1] = playerposition[1] - 72
-    canvas.create_image(playerposition[0], playerposition[1], anchor = NW, image = photo5)
+    if playerposition[1] != 0:
+        gameScreen()
+        playerposition[1] = playerposition[1] - 72
+        canvas.create_image(playerposition[0], playerposition[1], anchor = NW, image = photo5)
+    else:
+        gameScreen()
+        playerposition[1] = playerposition[1]
+        canvas.create_image(playerposition[0], playerposition[1], anchor = NW, image = photo5)
 
 master.bind("<Up>", move_up)
 
