@@ -13,6 +13,7 @@ photo3 = PhotoImage(file = "hero-right.png")
 photo4 = PhotoImage(file = "hero-left.png")
 photo5 = PhotoImage(file = "hero-up.png")
 photo6 = PhotoImage(file = "skeleton.png")
+photo7 = PhotoImage(file = "boss.png")
 
 class Floor:
 
@@ -77,21 +78,54 @@ coordinates = Coordinates()
 coordinates.gameScreenDraw()
 coordinates.getFloorCoordinates()
 
+placeTaken = []
+
 class Skeleton:
 
     def __init__(self, playerposition):
         self.playerposition = playerposition
         self.image = photo6
+        self.randomNumberList = []
 
     def draw(self):
-        randomNumberList = []
+        self.randomNumberList = []
+        global placeTaken
         x = random.randint(0, 10)
-        randomNumberList.append(x)
+        self.randomNumberList.append(x)
         z = random.randint(0, 10)
-        randomNumberList.append(z)
-        if randomNumberList in coordinates.getFloorCoordinates():
-            canvas.create_image(randomNumberList[0] * 72, randomNumberList[1] * 72, anchor = NW, image = self.image)
+        self.randomNumberList.append(z)
+        if self.randomNumberList in coordinates.getFloorCoordinates() and self.randomNumberList not in placeTaken and self.randomNumberList != [0, 0]:
+            canvas.create_image(self.randomNumberList[0] * 72, self.randomNumberList[1] * 72, anchor = NW, image = self.image)
+            placeTaken = placeTaken + [self.randomNumberList]
+        else:
+            self.draw()
 
+    def drawAnyway(self):
+        canvas.create_image(self.randomNumberList[0] * 72, self.randomNumberList[1] * 72, anchor = NW, image = self.image)
+
+
+class Boss:
+
+    def __init__(self, playerposition):
+        self.playerposition = playerposition
+        self.image = photo7
+        self.randomNumberList = []
+
+    def draw(self):
+        self.randomNumberList = []
+        global placeTaken
+        x = random.randint(0, 10)
+        self.randomNumberList.append(x)
+        z = random.randint(0, 10)
+        self.randomNumberList.append(z)
+        if self.randomNumberList in coordinates.getFloorCoordinates() and self.randomNumberList not in placeTaken and self.randomNumberList != [0, 0]:
+            canvas.create_image(self.randomNumberList[0] * 72, self.randomNumberList[1] * 72, anchor = NW, image = self.image)
+            placeTakenbyBoss = [self.randomNumberList]
+        else:
+            self.draw()
+
+    def drawAnyway(self):
+        canvas.create_image(self.randomNumberList[0] * 72, self.randomNumberList[1] * 72, anchor = NW, image = self.image)
 
 class Hero:
 
@@ -149,11 +183,19 @@ class Hero:
     def move_down(self):
         if self.playerposition[1] != 9 * 72 and self.absolutePlayerpositionUp() in coordinates.getFloorCoordinates():
             coordinates.gameScreenDraw()
+            boss.drawAnyway()
+            skeleton.drawAnyway()
+            skeleton1.drawAnyway()
+            skeleton2.drawAnyway()
             self.playerposition[1] = self.playerposition[1] + 72
             self.image = photo2
             self.draw()
         else:
             coordinates.gameScreenDraw()
+            boss.drawAnyway()
+            skeleton.drawAnyway()
+            skeleton1.drawAnyway()
+            skeleton2.drawAnyway()
             self.playerposition[1] = self.playerposition[1]
             self.image = photo2
             self.draw()
@@ -161,11 +203,19 @@ class Hero:
     def move_right(self):
         if self.playerposition[0] != 9 * 72 and self.absolutePlayerpositionRight() in coordinates.getFloorCoordinates():
             coordinates.gameScreenDraw()
+            boss.drawAnyway()
+            skeleton.drawAnyway()
+            skeleton1.drawAnyway()
+            skeleton2.drawAnyway()
             self.playerposition[0] = self.playerposition[0] + 72
             self.image = photo3
             self.draw()
         else:
             coordinates.gameScreenDraw()
+            boss.drawAnyway()
+            skeleton.drawAnyway()
+            skeleton1.drawAnyway()
+            skeleton2.drawAnyway()
             self.playerposition[0] = self.playerposition[0]
             self.image = photo3
             self.draw()
@@ -173,11 +223,19 @@ class Hero:
     def move_left(self):
         if self.playerposition[0] != 0 and self.absolutePlayerpositionLeft() in coordinates.getFloorCoordinates():
             coordinates.gameScreenDraw()
+            boss.drawAnyway()
+            skeleton.drawAnyway()
+            skeleton1.drawAnyway()
+            skeleton2.drawAnyway()
             self.playerposition[0] = self.playerposition[0] - 72
             self.image = photo4
             self.draw()
         else:
             coordinates.gameScreenDraw()
+            boss.drawAnyway()
+            skeleton.drawAnyway()
+            skeleton1.drawAnyway()
+            skeleton2.drawAnyway()
             self.playerposition[0] = self.playerposition[0]
             self.image = photo4
             self.draw()
@@ -185,11 +243,19 @@ class Hero:
     def move_up(self):
         if self.playerposition[1] != 0 and self.absolutePlayerpositionDown() in coordinates.getFloorCoordinates():
             coordinates.gameScreenDraw()
+            boss.drawAnyway()
+            skeleton.drawAnyway()
+            skeleton1.drawAnyway()
+            skeleton2.drawAnyway()
             self.playerposition[1] = self.playerposition[1] - 72
             self.image = photo5
             self.draw()
         else:
             coordinates.gameScreenDraw()
+            boss.drawAnyway()
+            skeleton.drawAnyway()
+            skeleton1.drawAnyway()
+            skeleton2.drawAnyway()
             self.playerposition[1] = self.playerposition[1]
             self.image = photo5
             self.draw()
@@ -228,5 +294,7 @@ skeleton1.draw()
 skeleton2 = Skeleton([0, 0])
 skeleton2.draw()
 
+boss = Boss([0, 0])
+boss.draw()
 
 master.mainloop()
