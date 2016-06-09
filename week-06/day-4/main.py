@@ -3,7 +3,7 @@ import random
 
 master = Tk()
 
-canvas = Canvas(master, width = '720', height = '750')
+canvas = Canvas(master, width = '720', height = '780')
 canvas.pack()
 
 photo0 = PhotoImage(file = "floor.png")
@@ -15,14 +15,8 @@ photo5 = PhotoImage(file = "hero-up.png")
 photo6 = PhotoImage(file = "skeleton.png")
 photo7 = PhotoImage(file = "boss.png")
 
-class Stats:
 
-    def draw(self):
-        T = Text(master, height = 30, width = 100)
-        T.insert(END, "Hero (Level 1) HP: 8/10 | DP: 8 | SP: 6")
-        T.place(x = 300, y = 720)
-
-class Drawer:
+class Tile:
 
     def __init__(self, x, y, type, image):
             self.x = x
@@ -33,13 +27,12 @@ class Drawer:
     def draw(self):
         canvas.create_image(self.x * 72, self.y * 72, anchor = NW, image = self.image)
 
-
-class Floor(Drawer):
+class Floor(Tile):
 
     def __init__(self, x, y):
         super(Floor, self).__init__(x, y, 'Floor', photo0)
 
-class Wall(Drawer):
+class Wall(Tile):
 
     def __init__(self, x, y):
         super(Wall, self).__init__(x, y, 'Wall', photo1)
@@ -50,7 +43,7 @@ class Map:
         self.map1 = [[0, 0, 1, 0, 0, 1, 0, 0, 0, 1],
         [0, 0, 1, 0, 0, 1, 0, 0, 0, 1],
         [0, 0, 1, 0, 0, 1, 0, 0, 0, 0],
-        [0, 0, 1, 0, 0, 1, 0, 1, 0, 1],
+        [0, 0, 0, 0, 0, 1, 0, 1, 0, 1],
         [0, 1, 1, 1, 0, 0, 0, 0, 0, 1],
         [0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 1, 0, 0, 1, 0, 1, 0, 0],
@@ -91,10 +84,33 @@ placeTaken = []
 
 class Character:
 
-    def __init__(self, playerposition, image):
+    def __init__(self, playerposition, image, HP, DP, SP):
         self.playerposition = playerposition
-        self.image = photo6
+        self.image = image
         self.randomNumberList = []
+        self.HP = HP
+        self.DP = DP
+        self.SP = SP
+        self.T = Text(master, height = 2, width = 150)
+        self.T.place(x = 5, y = 720)
+
+    def countPoints(self):
+        self.HP = random.randint(1, 6)
+        self.DP = random.randint(1, 6)
+        self.SP = random.randint(1, 6)
+
+    def printPoints(self):
+        self.T.insert(INSERT, 'HP: ', self.HP)
+        self.T.insert(INSERT, self.HP)
+        self.T.insert(INSERT, ' | DP: ', self.DP)
+        self.T.insert(INSERT, self.DP)
+        self.T.insert(INSERT, ' | SP: ', self.SP)
+        self.T.insert(INSERT, self.SP)
+
+class Enemy(Character):
+
+    def __init__(self, playerposition, image, HP, DP, SP):
+        super(Enemy, self).__init__(playerposition, image, HP, DP, SP)
 
     def draw(self):
         self.randomNumberList = []
@@ -112,22 +128,36 @@ class Character:
     def drawAnyway(self):
         canvas.create_image(self.randomNumberList[0] * 72, self.randomNumberList[1] * 72, anchor = NW, image = self.image)
 
-
-class Skeleton(Character):
-
-    def __init__(self, playerposition):
-        super(Skeleton, self).__init__(playerposition, photo6)
-
-class Boss(Character):
+class Skeleton(Enemy):
 
     def __init__(self, playerposition):
-        super(Boss, self).__init__(playerposition, photo7)
+        super(Skeleton, self).__init__(playerposition, photo6, 1, 1, 1)
+        self.T.place(x = 100, y = 720)
+        self.printPoints()
 
-class Hero:
+    # def countPoints(self):
+        # self.HP = (2 * random.randint(1, 6)) + random.randint(1, 6)
+        # self.DP = (2 * random.randint(1, 6)) + (random.randint(1, 6)/2)
+        # self.SP = random.randint(1, 6)
+
+class Boss(Enemy):
 
     def __init__(self, playerposition):
-        self.playerposition = playerposition
-        self.image = photo2
+        super(Boss, self).__init__(playerposition, photo7, 1, 1, 1)
+        self.T.place(x = 300, y = 720)
+        self.printPoints()
+
+    # def countPoints(self):
+        # self.HP = 0
+        # self.DP = 0
+        # self.SP = 0
+
+# Hero (Level 1) HP: 8/10 | DP: 8 | SP: 6
+
+class Hero(Character):
+
+    def __init__(self, playerposition):
+        super(Hero, self).__init__(playerposition, photo2, 20, 1, 5)
 
     def draw(self):
         canvas.create_image(self.playerposition[0], self.playerposition[1], anchor = NW, image = self.image)
@@ -138,8 +168,8 @@ class Hero:
         absolutePlayerposition = self.playerposition[0] // 72
         output.append(absolutePlayerposition)
         absolutePlayerposition = self.playerposition[1] // 72
-        if absolutePlayerposition != 0:
-            absolutePlayerposition = absolutePlayerposition + 1
+        # if absolutePlayerposition != 0:
+        absolutePlayerposition = absolutePlayerposition + 1
         output.append(absolutePlayerposition)
         return output
 
@@ -149,8 +179,8 @@ class Hero:
         absolutePlayerposition = self.playerposition[0] // 72
         output.append(absolutePlayerposition)
         absolutePlayerposition = self.playerposition[1] // 72
-        if absolutePlayerposition != 0:
-            absolutePlayerposition = absolutePlayerposition - 1
+        # if absolutePlayerposition != 0:
+        absolutePlayerposition = absolutePlayerposition - 1
         output.append(absolutePlayerposition)
         return output
 
@@ -158,8 +188,8 @@ class Hero:
         absolutePlayerposition = 0
         output = []
         absolutePlayerposition = self.playerposition[0] // 72
-        if absolutePlayerposition != 0:
-            absolutePlayerposition = absolutePlayerposition + 1
+        # if absolutePlayerposition != 0:
+        absolutePlayerposition = absolutePlayerposition + 1
         output.append(absolutePlayerposition)
         absolutePlayerposition = self.playerposition[1] // 72
         output.append(absolutePlayerposition)
@@ -169,8 +199,8 @@ class Hero:
         absolutePlayerposition = 0
         output = []
         absolutePlayerposition = self.playerposition[0] // 72
-        if absolutePlayerposition != 0:
-            absolutePlayerposition = absolutePlayerposition - 1
+        # if absolutePlayerposition != 0:
+        absolutePlayerposition = absolutePlayerposition - 1
         output.append(absolutePlayerposition)
         absolutePlayerposition = self.playerposition[1] // 72
         output.append(absolutePlayerposition)
@@ -283,6 +313,8 @@ hero.draw()
 
 skeleton = Skeleton([0, 0])
 skeleton.draw()
+# skeleton.countPoints()
+# skeleton.printPoints()
 
 skeleton1 = Skeleton([0, 0])
 skeleton1.draw()
@@ -292,8 +324,7 @@ skeleton2.draw()
 
 boss = Boss([0, 0])
 boss.draw()
-
-stats = Stats()
-stats.draw()
+# boss.countPoints()
+# boss.printPoints()
 
 master.mainloop()
