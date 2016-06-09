@@ -22,7 +22,7 @@ class Stats:
         T.insert(END, "Hero (Level 1) HP: 8/10 | DP: 8 | SP: 6")
         T.place(x = 300, y = 720)
 
-class Tiles:
+class Drawer:
 
     def __init__(self, x, y, type, image):
             self.x = x
@@ -34,12 +34,12 @@ class Tiles:
         canvas.create_image(self.x * 72, self.y * 72, anchor = NW, image = self.image)
 
 
-class Floor(Tiles):
+class Floor(Drawer):
 
     def __init__(self, x, y):
         super(Floor, self).__init__(x, y, 'Floor', photo0)
 
-class Wall(Tiles):
+class Wall(Drawer):
 
     def __init__(self, x, y):
         super(Wall, self).__init__(x, y, 'Wall', photo1)
@@ -89,9 +89,9 @@ map.getFloorCoordinates()
 
 placeTaken = []
 
-class Skeleton:
+class Character:
 
-    def __init__(self, playerposition):
+    def __init__(self, playerposition, image):
         self.playerposition = playerposition
         self.image = photo6
         self.randomNumberList = []
@@ -113,28 +113,15 @@ class Skeleton:
         canvas.create_image(self.randomNumberList[0] * 72, self.randomNumberList[1] * 72, anchor = NW, image = self.image)
 
 
-class Boss:
+class Skeleton(Character):
 
     def __init__(self, playerposition):
-        self.playerposition = playerposition
-        self.image = photo7
-        self.randomNumberList = []
+        super(Skeleton, self).__init__(playerposition, photo6)
 
-    def draw(self):
-        self.randomNumberList = []
-        global placeTaken
-        x = random.randint(0, 10)
-        self.randomNumberList.append(x)
-        z = random.randint(0, 10)
-        self.randomNumberList.append(z)
-        if self.randomNumberList in map.getFloorCoordinates() and self.randomNumberList not in placeTaken and self.randomNumberList != [0, 0]:
-            canvas.create_image(self.randomNumberList[0] * 72, self.randomNumberList[1] * 72, anchor = NW, image = self.image)
-            placeTakenbyBoss = [self.randomNumberList]
-        else:
-            self.draw()
+class Boss(Character):
 
-    def drawAnyway(self):
-        canvas.create_image(self.randomNumberList[0] * 72, self.randomNumberList[1] * 72, anchor = NW, image = self.image)
+    def __init__(self, playerposition):
+        super(Boss, self).__init__(playerposition, photo7)
 
 class Hero:
 
