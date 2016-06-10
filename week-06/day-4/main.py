@@ -81,14 +81,20 @@ map.getFloorCoordinates()
 
 placeTaken = []
 
-class Draw():
+
+class Drawer():
+
+    def __init__(self, playerposition, image):
+        self.playerposition = playerposition
+        self.image = image
 
     def draw(self):
         canvas.create_image(self.playerposition[0], self.playerposition[1], anchor = NW, image = self.image)
 
-class Character():
+class Character(Drawer):
 
     def __init__(self, playerposition, image, HP, DP, SP):
+        super(Character, self).__init__(playerposition, image)
         self.playerposition = playerposition
         self.image = image
         self.randomNumberList = []
@@ -106,15 +112,14 @@ class Character():
         self.T.insert(INSERT, ' | SP: ', self.SP)
         self.T.insert(INSERT, self.SP)
 
-    def draw(self):
-        canvas.create_image(self.playerposition[0], self.playerposition[1], anchor = NW, image = self.image)
+    # def draw(self):
+        # canvas.create_image(self.playerposition[0], self.playerposition[1], anchor = NW, image = self.image)
 
 class Enemy(Character):
 
     def __init__(self, playerposition, image, HP, DP, SP):
         super(Enemy, self).__init__(playerposition, image, HP, DP, SP)
         self.randomPositionGenerator()
-        self.draw()
 
     def randomPositionGenerator(self):
         self.randomNumberList = []
@@ -159,6 +164,7 @@ class Hero(Character):
         self.T.place(x = 300, y = 720)
         self.T.insert(INSERT, 'Hero ' )
         self.printPoints()
+        self.draw()
 
     def calculate(self):
         return random.randint(1, 6)
@@ -282,7 +288,7 @@ master.bind("<Down>", move_down_press_key)
 
 
 hero = Hero([0, 0])
-hero.draw()
+# hero.draw()
 
 skeleton = Skeleton([0, 0])
 skeleton.draw()
