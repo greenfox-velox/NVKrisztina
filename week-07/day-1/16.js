@@ -6,12 +6,5 @@ var p2 = [4, 5];
 
 var a = 0;
 var a = p1.length;
-if (p1.lenth < p2.length){
 
-  console.log(true);
-
-} else {
-
-  console.log(false);
-
-}
+console.log(p1.length < p2.length);
