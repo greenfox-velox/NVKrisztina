@@ -2,6 +2,7 @@
 <head>
   <meta charset="UTF-8">
   <link rel = "stylesheet" type = "text/css" href = "gallery.css">
+    <title>Gallery</title>
 </head>
   <body>
     <div class="flex-container">
@@ -11,26 +12,36 @@
       <div class="middle">
         <div class="left box">
           <div class="arrow box toLeft">
-            <div class="iconForMove">
-              <p><strong><</strong></p>
+            <div class="iconForMove toLeftSide">
+              <button class="clickOn">&lt;</button>
             </div>
           </div>
         </div>
         <div class="central box">
           <div class="imageContainer">
-            <img class="inTheMiddle" src = "cat.jpg">
+            <img class="inTheMiddle" src = "cat9.jpg">
           </div>
         </div>
         <div class="right box">
           <div class="arrow box">
             <div class="iconForMove">
-              <p><strong>></strong></p>
+              <button class="clickOn">&gt;</button>
             </div>
           </div>
         </div>
       </div>
-    <div class="lower box"></div>
+    <div class="lower box">
+      <div class="thumbnail">
+        <button class="clickOn leftToThumbnail">&lt;</button>
+        <img class="inThumbnail" src = "">
+        <img class="inThumbnail" src = "">
+        <img class="inThumbnail" src = "">
+        <img class="inThumbnail" src = "">
+        <img class="inThumbnail" src = "">
+        <button class="clickOn rightToThumbnail">&gt;</button>
+    </div>
   </div>
+  <script src="gallery.js"></script>
   </body>
 
 
