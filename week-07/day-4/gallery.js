@@ -32,14 +32,23 @@ thumbnails.forEach(function(item, index){
   item.setAttribute("src", photoList[index]);
 });
 
+var number = 0;
+
+function setNumberBetweenPhotoListlength() {
+  if (number > photoList.length - thumbnailLength){
+    number = photoList.length - thumbnailLength;
+  } else if (number < 0){
+    number = 0;
+  }
+}
+
 var leftThumbnailButton = document.querySelector('.leftToThumbnail');
 leftThumbnailButton.addEventListener("click", swipeImagesRight);
 
 var thumbnailLength = document.querySelectorAll('.inThumbnail').length;
 
-var number = 0;
-
 function swipeImagesLeft() {
+  setNumberBetweenPhotoListlength();
   number += 1;
   if (photoList.length > number + thumbnailLength - 1){
   thumbnails.forEach(function(item, num){
@@ -52,6 +61,7 @@ var rightThumbnailButton = document.querySelector('.rightToThumbnail');
 rightThumbnailButton.addEventListener("click", swipeImagesLeft);
 
 function swipeImagesRight() {
+  setNumberBetweenPhotoListlength();
   number -= 1;
   if (number >= 0){
   thumbnails.forEach(function(item, num){
