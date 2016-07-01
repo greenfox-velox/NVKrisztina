@@ -37,14 +37,14 @@ leftThumbnailButton.addEventListener("click", swipeImagesRight);
 
 var thumbnailLength = document.querySelectorAll('.inThumbnail').length;
 
-var number = 1;
+var number = 0;
 
 function swipeImagesLeft() {
+  number += 1;
   if (photoList.length > number + thumbnailLength - 1){
   thumbnails.forEach(function(item, num){
       item.setAttribute("src", photoList[num + number]);
   });
-  number += 1;
 };
 };
 
@@ -52,10 +52,10 @@ var rightThumbnailButton = document.querySelector('.rightToThumbnail');
 rightThumbnailButton.addEventListener("click", swipeImagesLeft);
 
 function swipeImagesRight() {
-  if (number - 1 > 0){
-  thumbnails.forEach(function(item, num){
-    item.setAttribute("src", photoList[num - number]);
-});
   number -= 1;
+  if (number >= 0){
+  thumbnails.forEach(function(item, num){
+    item.setAttribute("src", photoList[num + number]);
+});
 };
 };
