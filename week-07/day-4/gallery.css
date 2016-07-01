@@ -1,5 +1,5 @@
 .flex-container{
-  margin: 0 auto;
+/**  margin: 0 auto;**/
 }
 
 body{
@@ -94,7 +94,9 @@ p{
 }
 
 .thumbnail{
-  margin-left: 390px;
+  margin: 0 auto;
+  width: 60%;
+  text-align: center;
 }
 
 .inThumbnail{
