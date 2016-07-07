@@ -1,10 +1,6 @@
 'use strict';
 
-//function loadItemWhenPageOpen(){
 var xhr = new XMLHttpRequest();
-
-//function createItems(){
-
 
 xhr.onload = function() {
   var objectRetrieved = JSON.parse(xhr.response);
@@ -19,7 +15,7 @@ xhr.onload = function() {
     mainListLabel.appendChild(mainListInput);
     newListItem.innerHTML = JSON.parse(xhr.response)[index].text;
     mainListInput.setAttribute('type', 'checkbox');
-    mainListInput.setAttribute('id', 'action');
+    mainListInput.setAttribute('class', 'rounded_checkbox');
     mainListInput.setAttribute('name', 'action');
     mainListInput.setAttribute('value', 'JSON.parse(xhr.response)[index].text');
     mainListLabel.setAttribute('src', 'kuka.png');
@@ -28,10 +24,3 @@ xhr.onload = function() {
 
 xhr.open('GET', 'https://mysterious-dusk-8248.herokuapp.com/todos');
 xhr.send();
-
-//console.log(JSON.parse(xhr.response)[index].text);
-
-
-
-
-//loadItemWhenPageOpen()
