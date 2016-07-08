@@ -14,13 +14,18 @@ xhr.onload = function() {
     newListItem.appendChild(mainListLabel);
     newListItem.appendChild(mainListImage);
     newListItem.appendChild(mainListImage2);
-    mainListImage2.setAttribute('src', 'circle.png');
+    if (item.completed){
+      mainListImage2.setAttribute('src', 'tick.png');
+    } else {
+      mainListImage2.setAttribute('src', 'circle.png');
+    }
     mainListImage2.setAttribute('type', 'checkbox');
     mainListImage2.setAttribute('class', 'rounded_checkbox');
     mainListImage2.addEventListener('click', check);
     mainListImage.setAttribute('src', 'kuka.png');
     mainListImage.addEventListener('click', remove);
-    mainListImage.setAttribute('data-identifier-forRemove', item.id);
+    newListItem.setAttribute('data-identifier-forremove', item.id);
+    mainListImage.setAttribute('data-identifier-forremove_image', item.id);
     mainListImage2.setAttribute('data-identifier', item.id);
     mainListImage2.setAttribute('data-text', item.text);
     mainListLabel.innerHTML = item.text;
@@ -40,7 +45,6 @@ function add_item(){
   inputText = JSON.stringify({'text' : inputText.value})
   xhr2.onreadystatechange = function() {
     if(xhr2.readyState == 4 && xhr2.status >= 200) {
-        alert(xhr2.responseText);
         var text = JSON.parse(xhr2.responseText).text;
         var newListItem = document.createElement('li');
         var mainListUl = document.querySelector('ul');
@@ -57,7 +61,8 @@ function add_item(){
         mainListImage2.addEventListener('click', check);
         mainListImage.setAttribute('src', 'kuka.png');
         mainListImage.addEventListener('click', remove);
-        mainListImage.setAttribute('data-identifier-forRemove', JSON.parse(xhr2.responseText).id);
+        newListItem.setAttribute('data-identifier-forremove', JSON.parse(xhr2.responseText).id);
+        mainListImage.setAttribute('data-identifier-forremove_image', JSON.parse(xhr2.responseText).id);
         mainListImage2.setAttribute('data-identifier', JSON.parse(xhr2.responseText).id);
         mainListImage2.setAttribute('data-text', JSON.parse(xhr2.responseText).text);
         mainListLabel.innerHTML = JSON.parse(xhr2.responseText).text;
@@ -76,7 +81,8 @@ function check(event){
   var text_completed = JSON.stringify({'text' : text, 'completed' : 'true'})
   xhr3.onreadystatechange = function() {
     if(xhr3.readyState == 4 && xhr3.status >= 200) {
-        alert(xhr3.response);
+        var addticktome = document.querySelector('[data-identifier="' + JSON.parse(xhr3.response).id + '"]')
+        addticktome.setAttribute('src', 'tick.PNG');
   }
   }
 
@@ -87,30 +93,12 @@ function check(event){
 
 function remove(event){
   var xhr4 = new XMLHttpRequest();
-  var id = event.target.getAttribute("data-identifier-forRemove");
+  var id = event.target.getAttribute("data-identifier-forremove_image");
   xhr4.onreadystatechange = function() {
     if(xhr4.readyState == 4 && xhr4.status >= 200) {
-        alert(xhr4.response);
-        var text = JSON.parse(xhr4.responseText).text;
-        var newListItem = document.createElement('li');
         var mainListUl = document.querySelector('ul');
-        var mainListLabel = document.createElement('label');
-        var mainListImage = document.createElement('img');
-        var mainListImage2 = document.createElement('img');
-        mainListUl.insertBefore(newListItem, newListItem[0]);
-        newListItem.appendChild(mainListLabel);
-        newListItem.appendChild(mainListImage);
-        newListItem.appendChild(mainListImage2);
-        mainListImage2.setAttribute('src', 'circle.png');
-        mainListImage2.setAttribute('type', 'checkbox');
-        mainListImage2.setAttribute('class', 'rounded_checkbox');
-        mainListImage2.addEventListener('click', check);
-        mainListImage.setAttribute('src', 'kuka.png');
-        mainListImage.addEventListener('click', remove);
-        mainListImage.setAttribute('data-identifier-forRemove', JSON.parse(xhr4.responseText).id);
-        mainListImage2.setAttribute('data-identifier', JSON.parse(xhr4.responseText).id);
-        mainListImage2.setAttribute('data-text', JSON.parse(xhr4.responseText).text);
-        mainListLabel.innerHTML = JSON.parse(xhr4.responseText).text;
+        var removable = document.querySelector('[data-identifier-forremove="' + JSON.parse(xhr4.response).id + '"]')
+        mainListUl.removeChild(removable);
   }
   }
 
