@@ -9,18 +9,20 @@ xhr.onload = function() {
     var mainListUl = document.querySelector('ul');
     var mainListLabel = document.createElement('label');
     var mainListImage = document.createElement('img');
-    var mainListInput = document.createElement('input');
+    var mainListImage2 = document.createElement('img');
     mainListUl.appendChild(newListItem);
     newListItem.appendChild(mainListLabel);
     newListItem.appendChild(mainListImage);
-    newListItem.appendChild(mainListInput);
-    mainListInput.setAttribute('type', 'checkbox');
-    mainListInput.setAttribute('class', 'rounded_checkbox');
-    mainListInput.addEventListener('click', check);
+    newListItem.appendChild(mainListImage2);
+    mainListImage2.setAttribute('src', 'circle.png');
+    mainListImage2.setAttribute('type', 'checkbox');
+    mainListImage2.setAttribute('class', 'rounded_checkbox');
+    mainListImage2.addEventListener('click', check);
     mainListImage.setAttribute('src', 'kuka.png');
     mainListImage.addEventListener('click', remove);
-    mainListInput.setAttribute('data-identifier', item.id);
-    mainListInput.setAttribute('data-text', item.text);
+    mainListImage.setAttribute('data-identifier-forRemove', item.id);
+    mainListImage2.setAttribute('data-identifier', item.id);
+    mainListImage2.setAttribute('data-text', item.text);
     mainListLabel.innerHTML = item.text;
   });
 };
@@ -44,18 +46,20 @@ function add_item(){
         var mainListUl = document.querySelector('ul');
         var mainListLabel = document.createElement('label');
         var mainListImage = document.createElement('img');
-        var mainListInput = document.createElement('input');
+        var mainListImage2 = document.createElement('img');
         mainListUl.insertBefore(newListItem, newListItem[0]);
         newListItem.appendChild(mainListLabel);
         newListItem.appendChild(mainListImage);
-        newListItem.appendChild(mainListInput);
-        mainListInput.setAttribute('type', 'checkbox');
-        mainListInput.setAttribute('class', 'rounded_checkbox');
-        mainListInput.addEventListener('click', check);
+        newListItem.appendChild(mainListImage2);
+        mainListImage2.setAttribute('src', 'circle.png');
+        mainListImage2.setAttribute('type', 'checkbox');
+        mainListImage2.setAttribute('class', 'rounded_checkbox');
+        mainListImage2.addEventListener('click', check);
         mainListImage.setAttribute('src', 'kuka.png');
         mainListImage.addEventListener('click', remove);
-        mainListInput.setAttribute('data-identifier', JSON.parse(xhr2.responseText).id);
-        mainListInput.setAttribute('data-text', JSON.parse(xhr2.responseText).text);
+        mainListImage.setAttribute('data-identifier-forRemove', JSON.parse(xhr2.responseText).id);
+        mainListImage2.setAttribute('data-identifier', JSON.parse(xhr2.responseText).id);
+        mainListImage2.setAttribute('data-text', JSON.parse(xhr2.responseText).text);
         mainListLabel.innerHTML = JSON.parse(xhr2.responseText).text;
     }
   }
@@ -83,7 +87,7 @@ function check(event){
 
 function remove(event){
   var xhr4 = new XMLHttpRequest();
-  var id = event.target.getAttribute("data-identifier");
+  var id = event.target.getAttribute("data-identifier-forRemove");
   xhr4.onreadystatechange = function() {
     if(xhr4.readyState == 4 && xhr4.status >= 200) {
         alert(xhr4.response);
@@ -92,18 +96,20 @@ function remove(event){
         var mainListUl = document.querySelector('ul');
         var mainListLabel = document.createElement('label');
         var mainListImage = document.createElement('img');
-        var mainListInput = document.createElement('input');
+        var mainListImage2 = document.createElement('img');
         mainListUl.insertBefore(newListItem, newListItem[0]);
         newListItem.appendChild(mainListLabel);
         newListItem.appendChild(mainListImage);
-        newListItem.appendChild(mainListInput);
-        mainListInput.setAttribute('type', 'checkbox');
-        mainListInput.setAttribute('class', 'rounded_checkbox');
-        mainListInput.addEventListener('click', check);
+        newListItem.appendChild(mainListImage2);
+        mainListImage2.setAttribute('src', 'circle.png');
+        mainListImage2.setAttribute('type', 'checkbox');
+        mainListImage2.setAttribute('class', 'rounded_checkbox');
+        mainListImage2.addEventListener('click', check);
         mainListImage.setAttribute('src', 'kuka.png');
         mainListImage.addEventListener('click', remove);
-        mainListInput.setAttribute('data-identifier', JSON.parse(xhr4.responseText).id);
-        mainListInput.setAttribute('data-text', JSON.parse(xhr4.responseText).text);
+        mainListImage.setAttribute('data-identifier-forRemove', JSON.parse(xhr4.responseText).id);
+        mainListImage2.setAttribute('data-identifier', JSON.parse(xhr4.responseText).id);
+        mainListImage2.setAttribute('data-text', JSON.parse(xhr4.responseText).text);
         mainListLabel.innerHTML = JSON.parse(xhr4.responseText).text;
   }
   }
