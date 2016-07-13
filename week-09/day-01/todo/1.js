@@ -83,7 +83,7 @@ app.put('/todos/:id', function(req, res){
 //       result.id = req.params.id;
 //       result.text = req.body.text;
 //       result.completed = req.params.completed;
-//       result.destroyed = "destroyed";
+//       result.destroyed = "true";
 //       console.log(result);
 //       res.send(result);
 //   });
@@ -98,7 +98,7 @@ app.delete('/todos/:id', function(req, res){
       result.id = req.params.id;
       result.text = req.body.text;
       result.completed = req.params.completed;
-      result.destroyed = "destroyed";
+      result.destroyed = "true";
       console.log(result);
       res.send(result);
   });
