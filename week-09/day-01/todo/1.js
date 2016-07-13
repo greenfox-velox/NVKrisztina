@@ -44,22 +44,17 @@ app.get('/todos', function(req, res){
 
 //*************************************************************
 
-function getId (req){
-  return todo_list.filter(function (item){
-      return item.id === Number(req.params.id)
-  });
-}
-
 app.get('/todos/:id', function(req, res){
-  var filtered = getId(req);
-  if (_this.filtered.length === 0) {
-    res.sendStatus(404);
-  } else {
-    res.send(todo_list[req.params.id]);
+  connection.query('select * from todos where id = ?', req.params.id, function(err, result){
+  if (err) {
+    console.error(err);
+    return;
   }
-})
+    res.send(result[0]);
+  });
+});
 
-//*******************post*(insert)*****************************************
+//*******************post*(insert)******************************
 
 app.post('/todos', function(req, res){
   connection.query('insert into todos set ?', req.body, function(err, result){
@@ -77,33 +72,41 @@ app.post('/todos', function(req, res){
   });
 });
 
-//********************put*(update)****************************************
+//********************put*(update)******************************
 
 app.put('/todos/:id', function(req, res){
-  var needed_obj = getId(req);
-  console.log(needed_obj);
-  if (needed_obj.length !== 0) {
-    needed_obj[0]["text"] = req.body.text;
-    needed_obj[0]["completed"] = req.body.completed;
-    res.send(needed_obj[0]);
-  } else {
-    req.body["id"] = id_number + 1;
-    req.body["completed"] = false;
-    todo_list.push(req.body);
-    res.send(req.body);
-  };
-})
+  connection.query('UPDATE todos SET completed = "true" where id = ?', req.params.id, function(err, result){
+    if(err){
+      console.error(err);
+      return;
+    }
+    console.error(result);
+    result = {};
+    result.id = req.params.id;
+    result.text = req.body.text;
+    result.completed = "true";
+    res.send(result);
+  });
+});
 
 
-//*****************************delete*****************************************
+//*****************************delete******************************
 
 app.delete('/todos/:id', function(req, res){
-  connection.query('DELETE FROM todos WHERE id = ?', req.id, function (err, result) {
+  console.log(req.params.id);
+  connection.query('UPDATE todos SET destroyed = "true" Where id = ?', req.params.id, function (err, result) {
       if (err) throw err;
-      console.log('Deleted ' + result.affectedRows + ' rows');
+      console.log('Changed ' + result.affectedRows + ' rows');
       res.send(result);
   })
 });
+
+// var filtered = getId(req);
+// if (filtered.length === 0) {
+//   res.sendStatus(404);
+// } else {
+//   filtered[0]["destroyed"] = true;
+//   res.send(filtered);
 
 
 app.listen(3000);
