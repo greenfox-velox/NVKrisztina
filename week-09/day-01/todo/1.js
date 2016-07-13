@@ -38,7 +38,6 @@ connection.connect();
 
 app.get('/todos', function(req, res){
   connection.query('select * from todos', function(err, result){
-    console.log(result);
     res.send(result);
   })
 });
@@ -63,23 +62,20 @@ app.get('/todos/:id', function(req, res){
 //*******************post*(insert)*****************************************
 
 app.post('/todos', function(req, res){
-  connection.query('insert into todos set ?', req.body, function(err, reso){
+  connection.query('insert into todos set ?', req.body, function(err, result){
     console.log(result.id);
     if(err){
       console.error(err);
       return;
     }
     console.error(result);
-    //console.log(result);
-    reso = {};
-    reso.id = 0;
-    reso.text = req.body.text;
-    reso.completed = "false";
-    console.log(reso);
-    res.send(reso);
+    result = {};
+    result.id = 0;
+    result.text = req.body.text;
+    result.completed = "false";
+    res.send(result);
   });
 });
-
 
 //********************put*(update)****************************************
 
