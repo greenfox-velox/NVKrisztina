@@ -1,21 +1,3 @@
-var todo_list = [
-    {
-        "completed": false,
-        "id": 1,
-        "text": "Buy milk"
-    },
-    {
-        "completed": false,
-        "id": 2,
-        "text": "Make dinner"
-    },
-    {
-        "completed": false,
-        "id": 3,
-        "text": "Save the world"
-    }
-]
-
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
@@ -92,21 +74,34 @@ app.put('/todos/:id', function(req, res){
 
 //*****************************delete******************************
 
+//only updates
+// app.delete('/todos/:id', function(req, res){
+//   connection.query('update todos set destroyed = "true" where id = ?', req.params.id, function (err, result) {
+//       if (err) throw err;
+//       console.log('Changed ' + result.affectedRows + ' rows');
+//       result = {};
+//       result.id = req.params.id;
+//       result.text = req.body.text;
+//       result.completed = req.params.completed;
+//       result.destroyed = "destroyed";
+//       console.log(result);
+//       res.send(result);
+//   });
+// });
+
+//removes
 app.delete('/todos/:id', function(req, res){
-  console.log(req.params.id);
-  connection.query('UPDATE todos SET destroyed = "true" Where id = ?', req.params.id, function (err, result) {
+  connection.query('delete from todos where id = ?', req.params.id, function (err, result) {
       if (err) throw err;
       console.log('Changed ' + result.affectedRows + ' rows');
+      result = {};
+      result.id = req.params.id;
+      result.text = req.body.text;
+      result.completed = req.params.completed;
+      result.destroyed = "destroyed";
+      console.log(result);
       res.send(result);
-  })
+  });
 });
-
-// var filtered = getId(req);
-// if (filtered.length === 0) {
-//   res.sendStatus(404);
-// } else {
-//   filtered[0]["destroyed"] = true;
-//   res.send(filtered);
-
 
 app.listen(3000);
