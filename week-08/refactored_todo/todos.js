@@ -75,7 +75,7 @@ function remove(event){
   xhr.send();
 }
 
-//*********************create one element***********
+//******************create one element*************
 
 function createOneElement (response){
   var newListItem = document.createElement('li');
