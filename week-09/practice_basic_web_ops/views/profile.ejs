@@ -1,0 +1,27 @@
+<html>
+<head>
+  <style>
+    body{background: yellow; font-family: "Comic Sans MS"; color: #fff; padding: 30px;}
+    h1{font-size: 48px; text-transform: uppercase; letter-spacing: 2px; text-align: center;}
+    p, li{font-size: 16px; text-align: center;}
+    h2{font-size: 30px; text-transform: uppercase; letter-spacing: 2px; text-align: center;}
+    ul{list-style-type: none; padding: 0;}
+  </style>
+</head>
+<body>
+
+  <h1>Welcome to the page of Samuel Hamilton</h1>
+  <p>Hello, <%= person%></p>
+          <h2>Book: <%= data.book %></h2>
+          <h2>Age: <%= data.age %></h2>
+          <h2>Job: <%= data.job %></h2>
+          <h2>Hobbies</h2>
+          <ul>
+            <% data.hobbies.forEach(function(item){ %>
+              <li><%= item %></li>
+            <% }); %>
+          </ul>
+</body>
+</html>
+
+<!--<img src="sunset.jpg">  img{width: 100%; position: absolute; z-index: 0;}-->

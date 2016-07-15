@@ -17,6 +17,7 @@ var todo1 = {"completed" : false, "id" : 1, "text" : "Buy milk"};
 var todo2 = {"completed" : false, "id" : 2, "text" : "Make dinner"};
 var todo3 = {"completed" : false, "id" : 3, "text" : "Save the world"};
 
+//collection.remove();
 
 //*****I have inserted all elements in db once*******
 // collection.insert([todo1, todo2, todo3], function (err, result) {
@@ -82,8 +83,7 @@ app.use(express.static('./public/assets'))
   // });
 
   app.get('/todos/:id', function(req, res){
-    console.log(req.params.id);
-    collection.find({id: req.params.id}).toArray(function(err, result){
+    collection.find({id: parseInt(req.params.id)}).toArray(function(err, result){
            if (err) {
             console.log(err);
             return;
@@ -93,25 +93,42 @@ app.use(express.static('./public/assets'))
 });
 //*****************post*(insert)******************
 
-cb = collection.count({}, function(error, numOfDocs){
-    var size = numOfDocs;
-});
-
 app.post('/todos', function(req, res){
   collection.insert({text: req.body.text}, function(err, result){
-    result = {};
-    //result.id = size;
-    result.id = req.params.id;
-    result.text = req.body.text;
-    result.completed = "false";
-    res.send(result);
+    collection.count({}, function(error, numOfDocs){
+        var size = numOfDocs;
+        result = {};
+        result.id = size + 1;
+        result.text = req.body.text;
+        result.completed = "false";
+        res.send(result);
+        console.log(result);
+      });
   })
 });
+
+//*************post works with fixed ids**********
+
+// collection.count({}, function(error, numOfDocs){
+//   var size = 0;
+//     return size = numOfDocs;
+// });
+//
+// app.post('/todos', function(req, res){
+//   collection.insert({text: req.body.text}, function(err, result){
+//     result = {};
+//     // result.id = req.params.id;
+//     result.id = size;
+//     result.text = req.body.text;
+//     result.completed = "false";
+//     res.send(result);
+//   })
+// });
 
 //********************put*(update)****************
 
 app.put('/todos/:id', function(req, res){
-  collection.update({_id:req.params.id}, {completed:"true"}, function(err, result){
+  collection.update({'id':parseInt(req.params.id)}, {$set:{'completed':"true"}}, function(err, result){
     if(err){
       console.error(err);
       return;
@@ -124,24 +141,24 @@ app.put('/todos/:id', function(req, res){
   });
 });
 
+//***********************delete*******************
+//only updates
 
-//*****************************delete******************************
-//
-// //only updates
-// // app.delete('/todos/:id', function(req, res){
-// //   connection.query('update todos set destroyed = "true" where id = ?', req.params.id, function (err, result) {
-// //       if (err) throw err;
-// //       console.log('Changed ' + result.affectedRows + ' rows');
-// //       result = {};
-// //       result.id = req.params.id;
-// //       result.text = req.body.text;
-// //       result.completed = req.params.completed;
-// //       result.destroyed = "true";
-// //       console.log(result);
-// //       res.send(result);
-// //   });
-// // });
-//
+app.delete('/todos/:id', function(req, res){
+  collection.update({id:req.params.id}, {destroyed:"true"}, function (err, result) {
+      if (err) throw err;
+      console.log('Changed ' + result.affectedRows + ' rows');
+      result = {};
+      result.id = req.params.id;
+      result.text = req.body.text;
+      result.completed = req.params.completed;
+      result.destroyed = "true";
+      console.log(result);
+      res.send(result);
+  });
+});
+
+
 // //removes
 // app.delete('/todos/:id', function(req, res){
 //   connection.query('delete from todos where id = ?', req.params.id, function (err, result) {
