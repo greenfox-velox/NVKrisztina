@@ -1,0 +1,14 @@
+[
+    {
+        "type": "tulip",
+        "color": "pink"
+    },
+    {
+      "type": "rose",
+      "color": "white"
+    },
+    {
+      "type": "tulip",
+      "color": "yellow"
+    }
+]

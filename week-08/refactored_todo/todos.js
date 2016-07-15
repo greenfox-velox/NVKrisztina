@@ -87,7 +87,7 @@ function createOneElement (response){
   newListItem.appendChild(mainListLabel);
   newListItem.appendChild(mainListImage);
   newListItem.appendChild(mainListImage2);
-  if (response.completed){
+  if (response.completed == "true"){
     mainListImage2.setAttribute('src', 'tick.png');
   } else {
     mainListImage2.setAttribute('src', 'circle.png');

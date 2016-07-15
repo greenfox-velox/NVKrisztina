@@ -1,0 +1,176 @@
+.big{
+  width: 820px;
+  height: 1000px;
+  background-color: #C0C0C0;
+  margin: 0 auto;
+  position: relative;
+  font-family: "Open Sans";
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.container1{
+  display: flex;
+  justify-content: space-between;
+  width: 640px;
+  height: 512px;
+  position: absolute;
+  margin-top: 43px;
+  margin-left: 90px;
+  margin-right: 90px;
+}
+
+.container2{
+  width: 640px;
+  height: 210px;
+  position: absolute;
+  margin-top: 555px;
+  margin-left: 90px;
+  margin-right: 90px;
+}
+
+.container3{
+  display: flex;
+  justify-content: space-between;
+  width: 640px;
+  height: 192px;
+  position: absolute;
+  margin-top: 766px;
+  margin-left: 90px;
+  margin-right: 90px;
+}
+
+.column{
+  width: 300px;
+}
+
+.one{
+  height: inherit;
+}
+
+.two{
+  height: inherit - 60px;
+  padding-top: 45px;
+}
+
+.three{
+  height: inherit;
+}
+
+.four{
+  height: inherit;
+}
+
+.leftright{
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.left{
+  display: inline;
+}
+
+.right{
+  display: inline;
+  margin-left: 15px;
+}
+
+.checkleft{
+  float: left;
+  margin-right: 27px;
+  font-weight: normal;
+}
+
+.checkright{
+  font-weight: normal;
+}
+
+#house {
+  color: gray;
+}
+option[value=""][disabled] {
+  display: none;
+}
+option {
+  color: black;
+}
+
+h1{
+  font-size: 22px;
+}
+
+h2{
+  font-size: 16px;
+  background-color: grey;
+  color: white;
+  border-radius: 2px;
+  padding: 6px 10px;
+}
+
+
+#name{
+  width: 300px;
+  height: 38px;
+  margin-bottom: 8px;
+}
+
+#number{
+  width: 80px;
+  height: 38px;
+}
+
+#tel{
+  width: 300px;
+  height: 38px;
+  margin-bottom: 8px;
+}
+
+#email{
+  width: 300px;
+  height: 38px;
+  margin-bottom: 8px;
+}
+
+#facebook{
+  width: 300px;
+  height: 38px;
+  margin-bottom: 8px;
+}
+
+#twitter{
+  width: 300px;
+  height: 38px;
+  margin-bottom: 8px;
+}
+
+#house{
+  width: 300px;
+  height: 38px;
+  margin-bottom: 8px;
+}
+
+p{
+  margin-bottom: 4px;
+}
+
+#filechoice{
+  height: 38px;
+  width: 165px;
+}
+
+.button{
+  height: 42px;
+}
+
+.white{
+  width: 130px;
+  margin-top: 114px;
+  margin-left: 172px;
+}
+
+.dark{
+  width: 165px;
+  background-color: #000066;
+  color: white;
+  padding: 10px 0px;
+}
